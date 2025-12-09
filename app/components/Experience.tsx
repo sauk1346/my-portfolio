@@ -19,7 +19,7 @@ export default function Experience() {
       achievements: [
         "Diseño e implementación de arquitectura de Microservicios y APIs RESTful escalables.",
         "Modelado y optimización de bases de datos relacionales con PostgreSQL.",
-        "Colaboración activa en equipos interdisciplinarios bajo metodologías ágiles, asegurando calida y consistencia del código.",
+        "Colaboración activa en equipos interdisciplinarios bajo metodologías ágiles, asegurando calidad y consistencia del código.",
       ],
       technologies: [
         { name: "NestJS", icon: SiNestjs, color: "#E0234E" },
