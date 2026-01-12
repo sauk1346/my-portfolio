@@ -70,13 +70,13 @@ export default function Projects() {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white dark:bg-zinc-800 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow block cursor-pointer"
+              className="group bg-white dark:bg-zinc-800 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow block cursor-pointer"
             >
-              <div className="relative h-48 bg-zinc-200 dark:bg-zinc-700">
+              <div className="relative h-48 bg-zinc-200 dark:bg-zinc-700 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
               </div>
               <div className="p-6">
