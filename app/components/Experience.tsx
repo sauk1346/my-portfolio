@@ -2,24 +2,41 @@ import {
   SiPostgresql,
   SiNodedotjs,
   SiTypescript,
-  SiPython,
-  SiDocker,
   SiGit,
   SiNestjs,
+  SiPhp,
+  SiMysql,
+  SiJavascript,
 } from "react-icons/si";
 
 export default function Experience() {
   const experiences = [
     {
-      title: "Desarrollador Backend",
+      title: "Desarrollador Web Fullstack",
+      company: "ITRed SpA",
+      period: "Dic. 2025 - Mar. 2026",
+      description: "Desarrollo y mantención de sitios web y tiendas virtuales a medida.",
+      achievements: [
+        "Migré más de 400 artículos de ayuda desde tablas de base de datos MySQL a sistema de archivos PHP, reduciendo la carga de consultas y simplificando el mantenimiento del contenido.",
+        "Implementé integración completa con la API de pagos Flow Chile en flujo de compra de dispositivos, habilitando pagos en línea para usuarios del portal tuusantiago.cl.",
+        "Desarrollé páginas dinámicas con lógica de parámetros GET para filtrado y navegación de contenido, siguiendo estándares de codificación internos de la empresa.",
+        "Participé en trabajo colaborativo con equipo de desarrollo en proyectos de sitios web y tiendas virtuales a medida con stack HTML5, CSS, PHP, JavaScript y MySQL.",
+      ],
+      technologies: [
+        { name: "PHP", icon: SiPhp, color: "#777BB4" },
+        { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+        { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+      ],
+    },
+    {
+      title: "Desarrollador Web Backend",
       company: "Digital Wave",
       period: "Dic. 2024 - Mar. 2025",
-      description:
-        "Sistema de Gestión Jurídica con Asistente IA Integrado",
+      description: "Sistema de Gestión Jurídica con Asistente IA Integrado.",
       achievements: [
-        "Diseño e implementación de arquitectura de Microservicios y APIs RESTful escalables.",
-        "Modelado y optimización de bases de datos relacionales con PostgreSQL.",
-        "Colaboración activa en equipos interdisciplinarios bajo metodologías ágiles, asegurando calidad y consistencia del código.",
+        "Diseñé microservicios con APIs intermedias para desacoplar servicios de backend, mejorando la escalabilidad y el mantenimiento del sistema.",
+        "Modelé esquemas relacionales en PostgreSQL para soportar lógica de negocio en proyectos con requerimientos legales y de datos complejos.",
+        "Colaboré en equipos interdisciplinarios con abogados, científicos de datos y diseñadores UX/UI, adaptando soluciones a requerimientos no técnicos.",
       ],
       technologies: [
         { name: "NestJS", icon: SiNestjs, color: "#E0234E" },
@@ -56,9 +73,11 @@ export default function Experience() {
                   {exp.period}
                 </span>
               </div>
-              <p className="text-zinc-600 dark:text-zinc-300 mb-4">
-                {exp.description}
-              </p>
+              {exp.description && (
+                <p className="text-zinc-600 dark:text-zinc-300 mb-4">
+                  {exp.description}
+                </p>
+              )}
               <ul className="space-y-2">
                 {exp.achievements.map((achievement, i) => (
                   <li
