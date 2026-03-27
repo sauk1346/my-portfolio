@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PiCertificateBold } from "react-icons/pi";
 
 export default function Education() {
   const education = [
@@ -31,6 +32,10 @@ export default function Education() {
       period: "Mar. 2024 - Mar. 2026",
       description:
         "El Analista Programador está capacitado para diseñar, construir e implementar programas computacionales aplicando técnicas modernas de programación, gestionar bases de datos, administrar redes locales y brindar soporte técnico a usuarios.",
+      diploma: {
+        name: "Certificado Analista Programador",
+        file: "/docs/Certificado_AnalistaProgramador.pdf",
+      },
       certificates: [
         {
           name: "Desarrollo Aplicaciones Iniciales",
@@ -166,6 +171,20 @@ export default function Education() {
                   <p className="text-zinc-600 dark:text-zinc-300 mb-4">
                     {edu.description}
                   </p>
+
+                  {"diploma" in edu && edu.diploma && (
+                    <div className="mt-4">
+                      <a
+                        href={(edu.diploma as { name: string; file: string }).file}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-50 dark:bg-amber-900/20 border border-amber-300 dark:border-amber-600 text-amber-800 dark:text-amber-300 rounded-lg text-sm font-semibold hover:bg-amber-100 dark:hover:bg-amber-900/40 hover:scale-105 transition-all"
+                      >
+                        <PiCertificateBold className="text-lg text-amber-600 dark:text-amber-400" />
+                        {(edu.diploma as { name: string; file: string }).name}
+                      </a>
+                    </div>
+                  )}
 
                   {edu.certificates && edu.certificates.length > 0 && (
                     <div className="mt-4 flex flex-wrap gap-3">
