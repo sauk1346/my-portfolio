@@ -40,7 +40,7 @@ export default function Hero() {
               Contáctame
             </a>
             <a
-              href="/docs/antoniomorales-cv.pdf"
+              href="/docs/cv_antonio_morales.pdf"
               download
               className="px-8 py-3 border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-50 rounded-lg font-medium transition-colors"
             >

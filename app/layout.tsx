@@ -12,11 +12,27 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://antoniomorales.cl";
+const title = "Antonio Morales | Desarrollador Web Fullstack";
+const description =
+  "Portfolio profesional de Antonio Morales, desarrollador web fullstack especializado en tecnologías modernas como React, Node.js y bases de datos relacionales y NoSQL.";
+
 export const metadata: Metadata = {
-  title: "Portfolio | Desarrollador Web Fullstack",
-  description: "Portfolio profesional de desarrollador web fullstack especializado en tecnologías modernas",
-  icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: siteUrl,
+    siteName: "Antonio Morales",
+    locale: "es_CL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
   },
 };
 
@@ -26,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

@@ -1,0 +1,137 @@
+\documentclass[10pt,a4paper]{article}
+
+% ===================== PAQUETES =====================
+\usepackage[margin=1.5cm,top=0.6cm,bottom=0.6cm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{spanish}
+\setmainfont{Carlito}
+\usepackage{microtype}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{parskip}
+
+% ===================== COLORES =====================
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{darkgray}{HTML}{333333}
+
+% ===================== HYPERLINKS =====================
+\hypersetup{
+    colorlinks=true,
+    urlcolor=accent,
+    linkcolor=accent
+}
+
+% ===================== TÍTULOS DE SECCIÓN =====================
+\titleformat{\section}
+  {\large\bfseries\color{accent}}
+  {}{0em}{}
+  [\vspace{-0.05em}\titlerule\vspace{0.3em}]
+\titlespacing*{\section}{0pt}{7pt}{3pt}
+
+\titleformat{\subsection}
+  {\bfseries\color{darkgray}}
+  {}{0em}{}
+\titlespacing*{\subsection}{0pt}{3pt}{0pt}
+
+% ===================== LISTAS =====================
+\setlist[itemize]{leftmargin=2em, rightmargin=3.3cm, itemsep=0.5pt, topsep=0pt, partopsep=0pt, parsep=0pt, label=\textperiodcentered}
+\setlength{\parskip}{1pt}
+
+\pagestyle{empty}
+\raggedbottom
+\setlength{\parindent}{0pt}
+
+% ===================== COMANDOS AUXILIARES =====================
+\newcommand{\entryheader}[3]{%
+    \par\vspace{7pt}\textbf{#1}\hfill\textit{#2}\\[-8pt]
+}
+
+\begin{document}
+\normalsize
+
+% ===================== ENCABEZADO =====================
+\begin{center}
+    {\LARGE \bfseries Antonio Morales C.}\\[6pt]
+    {\large \color{darkgray} Desarrollador Web Fullstack \,|\, Analista Programador}\\[3pt]
+    \small
+    (+56) 9 6461 0880 \quad $\vert$ \quad
+    \href{mailto:atmoralesc@gmail.com}{atmoralesc@gmail.com} \quad $\vert$ \quad
+    \href{https://linkedin.com/in/atmoralesc}{linkedin.com/in/atmoralesc} \\[2pt]
+    \href{https://github.com/sauk1346}{github.com/sauk1346} \quad $\vert$ \quad
+    \href{https://antoniomorales.cl}{antoniomorales.cl} \quad $\vert$ \quad
+    Santiago, Chile
+\end{center}
+
+\vspace{4pt}
+
+% ===================== RESUMEN =====================
+\section{Resumen Profesional}
+Desarrollador Web Fullstack con experiencia práctica en proyectos reales de software. Manejo de tecnologías frontend y backend (PHP, MySQL, JavaScript, Python, Django, React, Next.js). Participación en equipos multidisciplinarios, integraciones con APIs de terceros y migración de sistemas de contenido a escala. Comprometido con la calidad del código y el aprendizaje continuo.
+
+% ===================== EXPERIENCIA =====================
+\section{Experiencia Laboral}
+
+\entryheader{Desarrollador Web Fullstack --- ITRed SpA \small{(Práctica profesional)}}{Dic 2025 -- Mar 2026}{}
+\begin{itemize}
+    \item Migré más de 400 artículos de ayuda desde tablas de base de datos MySQL a sistema de archivos PHP, reduciendo la carga de consultas y simplificando el mantenimiento del contenido.
+    \item Implementé integración completa con la API de pagos Flow Chile en flujo de compra de dispositivos, habilitando pagos en línea para usuarios del portal tuusantiago.cl.
+    \item Desarrollé páginas dinámicas con parámetros GET para filtrado y navegación de contenido, según estándares internos de codificación.
+    \item Participé en trabajo colaborativo con equipo de desarrollo en proyectos de sitios web y tiendas virtuales a medida con stack HTML5, CSS, PHP, JavaScript y MySQL.
+\end{itemize}
+
+\entryheader{Desarrollador Web Backend --- Digital Wave \small{(Práctica profesional)}}{Dic 2024 -- Mar 2025}{}
+\begin{itemize}
+    \item Diseñé microservicios con APIs intermedias para desacoplar servicios de backend, mejorando la escalabilidad y el mantenimiento del sistema.
+    \item Modelé esquemas relacionales en PostgreSQL para soportar lógica de negocio en proyectos con requerimientos legales y de datos complejos.
+    \item Colaboré en equipos interdisciplinarios con abogados, científicos de datos y diseñadores UX/UI, adaptando soluciones técnicas a requerimientos no técnicos.
+\end{itemize}
+
+% ===================== PROYECTOS DESTACADOS =====================
+\section{Proyectos Destacados}
+
+\entryheader{SGAPC --- Sistema de Gestión de Automatización de Proyectos Convalidables}{2025}{}
+\begin{itemize}
+    \item Sistema Django/React/PostgreSQL/Docker para automatizar la selección de alumnos en proyectos institucionales basada en méritos académicos. Proyecto institucional INACAP (sin demo pública).
+\end{itemize}
+
+\entryheader{SaukCode --- Proyecto Personal}{2024 -- actualidad}{}
+\begin{itemize}
+    \item Plataforma educativa personal desarrollada con Next.js que centraliza apuntes de Ingeniería Informática, ejercicios de algoritmia, material de bootcamps y recursos para idiomas extranjeros. Desplegada en VPS propio con NGINX y PM2. \href{https://saukcode.cl}{ver~sitio}
+\end{itemize}
+
+% ===================== HABILIDADES =====================
+\section{Habilidades Técnicas}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{1.2cm}}X@{}}
+    \textbf{Lenguajes:} \newline PHP, Python, JavaScript, TypeScript, HTML5, CSS3 &
+    \textbf{Frameworks:} \newline Django, React, Next.js, NestJS \\[8pt]
+    \textbf{Bases de datos:} \newline MySQL, PostgreSQL, MS SQL Server, MongoDB &
+    \textbf{Herramientas:} \newline Git, GitHub, Linux, Docker (básico), REST APIs \\[8pt]
+    \textbf{Metodologías:} \newline Desarrollo colaborativo, revisión de código, estándares de codificación &
+    \textbf{Idiomas:} \newline Inglés (intermedio) \\
+\end{tabularx}
+
+% ===================== EDUCACIÓN =====================
+\section{Educación}
+\newlength{\edunamewidth}
+\settowidth{\edunamewidth}{\textbf{Ingeniería en Informática}}
+\makebox[\edunamewidth][l]{\textbf{Ingeniería en Informática}} \textbf{--- INACAP Santiago Centro} \hfill \textit{2024 -- actualidad}\\
+\makebox[\edunamewidth][l]{\textbf{Analista Programador}} \textbf{--- INACAP Santiago Centro} \, \href{https://antoniomorales.cl/docs/Certificado_AnalistaProgramador.pdf}{\small ver~certificado} \hfill \textit{2024 -- 2026}
+
+% ===================== BOOTCAMPS =====================
+\section{Bootcamps y Certificaciones}
+
+\entryheader{Ciencia de Datos e Inteligencia Artificial --- Universidad del Desarrollo}{Mar -- Oct 2024}{}
+\begin{itemize}
+    \item Programa intensivo de 7 meses en análisis de datos, machine learning y deep learning con Python. Herramientas: Scikit-learn, TensorFlow, Keras, pandas, matplotlib. \href{https://antoniomorales.cl/docs/DS-Diploma.pdf}{ver~diploma}
+\end{itemize}
+
+\entryheader{Desarrollo Web Fullstack --- Universidad del Desarrollo}{Ene -- Ago 2024}{}
+\begin{itemize}
+    \item Programa intensivo de 7 meses cubriendo HTML, CSS, JavaScript, React y Node.js con bases de datos relacionales. \href{https://antoniomorales.cl/docs/DWFS-Diploma.pdf}{ver~diploma}
+\end{itemize}
+
+\end{document}

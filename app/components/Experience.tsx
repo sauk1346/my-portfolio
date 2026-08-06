@@ -74,7 +74,7 @@ export default function Experience() {
                 </span>
               </div>
               {exp.description && (
-                <p className="text-zinc-600 dark:text-zinc-300 mb-4">
+                <p className="text-zinc-600 dark:text-zinc-300 mb-4 text-justify hyphens-auto">
                   {exp.description}
                 </p>
               )}
@@ -87,7 +87,7 @@ export default function Experience() {
                     <span className="text-blue-600 dark:text-blue-400 mr-2">
                       ▹
                     </span>
-                    {achievement}
+                    <span className="text-justify hyphens-auto">{achievement}</span>
                   </li>
                 ))}
               </ul>

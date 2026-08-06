@@ -19,7 +19,7 @@ export default function Home() {
         <Contact />
       </main>
       <footer className="py-8 text-center text-sm text-zinc-500 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-800">
-        <p>© 2025 Antonio Morales. Todos los derechos reservados.</p>
+        <p>© {new Date().getFullYear()} Antonio Morales. Todos los derechos reservados.</p>
       </footer>
     </div>
   );

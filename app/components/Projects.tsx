@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Projects() {
   const projects: Array<{
     title: string;
@@ -73,17 +75,19 @@ export default function Projects() {
               className="group bg-white dark:bg-zinc-800 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow block cursor-pointer"
             >
               <div className="relative h-48 bg-zinc-200 dark:bg-zinc-700 overflow-hidden">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
                   {project.title}
                 </h3>
-                <p className="text-zinc-600 dark:text-zinc-300 mb-4">
+                <p className="text-zinc-600 dark:text-zinc-300 mb-4 text-justify hyphens-auto">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
