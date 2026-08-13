@@ -11,7 +11,7 @@ export default function Hero() {
           <div className="mb-8 flex justify-center">
             <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56">
               <Image
-                src="/images/perfilV2.png"
+                src="/images/avatar.png"
                 alt="Antonio Morales"
                 fill
                 className="rounded-full object-cover object-[center_20%] border-4 border-blue-600 dark:border-purple-600"
