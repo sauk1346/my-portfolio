@@ -3,7 +3,7 @@
 # Hace pull del repo, build de Astro y sincroniza al directorio que sirve Nginx.
 # Copia versionada: la que se ejecuta vive en /root/deploy-portfolio.sh del VPS.
 set -euo pipefail
-export PATH="$HOME/.nvm/versions/node/v22.23.3/bin:$PATH"
+export PATH="$HOME/.nvm/versions/node/v26.13.1/bin:$PATH"
 
 cd /root/my-portfolio
 echo "== git pull =="
