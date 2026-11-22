@@ -20,7 +20,7 @@ Para volver a desplegar sin commits nuevos: `gh workflow run deploy.yml` y luego
 | Archivos publicados | `/root/portfolio-live` |
 | Script de despliegue | `/root/deploy-portfolio.sh` |
 | Configuración de Nginx | `/etc/nginx/sites-available/antoniomorales.cl` (ejemplo en `nginx-config-example.conf`) |
-| Node | nvm, `v22.23.3` (la ruta está fijada en el script) |
+| Node | nvm, `v26.13.1` (la ruta está fijada en el script) |
 
 ## Si cambia la versión de Node del VPS
 
