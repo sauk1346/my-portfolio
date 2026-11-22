@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
 
 /* Configurar dark mode con clase en lugar de media query */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -6,8 +8,13 @@
 @theme {
   --color-background: #ffffff;
   --color-foreground: #171717;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+}
+
+/* Desplazamiento suave al usar los enlaces del menú */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Transiciones suaves para todos los elementos */

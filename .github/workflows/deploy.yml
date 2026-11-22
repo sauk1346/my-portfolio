@@ -1,0 +1,26 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-produccion
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Desplegar en el VPS
+        env:
+          SSH_KEY: ${{ secrets.VPS_DEPLOY_KEY }}
+        # La clave está restringida en el VPS a /root/deploy-portfolio.sh
+        # (comando forzado): no puede abrir una terminal ni ejecutar otra cosa.
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "69.62.91.38 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIARHAOWq3m5xnnaOa+LtCVW+Dr+UvbnKSXEN3cMr0zQJ" > ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes root@69.62.91.38 deploy

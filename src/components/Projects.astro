@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import project01 from '../assets/images/project01.png';
+import project02 from '../assets/images/project02.png';
+import project03 from '../assets/images/project03.png';
+import project04 from '../assets/images/project04.png';
+import project05 from '../assets/images/project05.png';
+import project06 from '../assets/images/project06.png';
+
+const projects: Array<{
+  title: string;
+  description: string;
+  technologies: string[];
+  image: ImageMetadata;
+  demo: string;
+}> = [
+  {
+    title: 'SaukCode',
+    description:
+      'Plataforma personal de apuntes de Ingeniería en Informática (más de 500 lecciones) y ejercicios de programación resueltos, con buscador y flashcards. Sitio estático con despliegue automático en VPS propio.',
+    technologies: ['Astro', 'React', 'MDX', 'Tailwind CSS', 'GitHub Actions'],
+    image: project01,
+    demo: 'https://www.saukcode.cl',
+  },
+  {
+    title: 'Neon Havoc',
+    description:
+      'Videojuego bullet-hell ambientado en un Santiago cyberpunk del año 2087. Desarrollado como proyecto académico con mecánicas de acción frenética y estética neón.',
+    technologies: ['Godot', 'GDScript', 'Game Design'],
+    image: project02,
+    demo: 'https://sauk1346.github.io/neon-havoc/',
+  },
+  {
+    title: 'Trigonautas',
+    description:
+      'Aplicación web interactiva que enseña conceptos de trigonometría mediante mecánicas de juego. Diseñada para hacer el aprendizaje matemático más accesible y entretenido.',
+    technologies: ['JavaScript', 'HTML5', 'CSS3', 'Game-based Learning'],
+    image: project03,
+    demo: 'https://sauk1346.github.io/gamification_proyect/',
+  },
+  {
+    title: 'Sistema de Detección de Neumonía',
+    description:
+      'Modelo de deep learning que detecta neumonía en radiografías de tórax mediante redes neuronales convolucionales. Entrenado y documentado en Google Colab.',
+    technologies: ['Python', 'TensorFlow', 'Keras', 'CNN', 'Deep Learning'],
+    image: project04,
+    demo: 'https://colab.research.google.com/drive/1RmuHqAVpVBOlC3Dk5FGS08z86xWaimnQ?usp=sharing',
+  },
+  {
+    title: 'E-commerce Fullstack',
+    description:
+      'Tienda online completa con autenticación de usuarios, carrito de compras persistente y panel de gestión de productos. Arquitectura cliente-servidor con API REST.',
+    technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
+    image: project05,
+    demo: 'https://udd-c13-proyecto07-1-frontend.onrender.com/',
+  },
+  {
+    title: 'PodsLife Landing Page',
+    description:
+      'Página de aterrizaje para una marca ficticia de dispositivos tecnológicos. Incluye secciones de características, catálogo de productos, testimonios de clientes y formulario de contacto.',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
+    image: project06,
+    demo: 'https://sauk1346.github.io/UDD_C13_Proyecto03/',
+  },
+];
+---
+
+<section id="proyectos" class="py-20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl font-bold text-zinc-900 dark:text-zinc-50 mb-12 text-center">Proyectos</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      {
+        projects.map((project) => (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group bg-white dark:bg-zinc-800 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow block cursor-pointer"
+          >
+            <div class="relative h-48 bg-zinc-200 dark:bg-zinc-700 overflow-hidden">
+              <Image
+                src={project.image}
+                alt={project.title}
+                widths={[640, 1280]}
+                sizes="(min-width: 768px) 50vw, 100vw"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-50 mb-2">{project.title}</h3>
+              <p class="text-zinc-600 dark:text-zinc-300 mb-4 text-justify hyphens-auto">{project.description}</p>
+              <div class="flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 text-sm rounded-full">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

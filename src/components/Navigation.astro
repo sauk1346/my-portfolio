@@ -1,0 +1,60 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const navItems = [
+  { id: 'sobre-mi', label: 'Sobre mí' },
+  { id: 'proyectos', label: 'Proyectos' },
+  { id: 'experiencia', label: 'Experiencia' },
+  { id: 'habilidades', label: 'Habilidades' },
+  { id: 'educacion', label: 'Educación' },
+  { id: 'contacto', label: 'Contacto' },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-zinc-200 dark:border-zinc-800">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="#sobre-mi" class="text-xl font-bold text-zinc-900 dark:text-zinc-50">Portfolio</a>
+      <div class="flex items-center gap-6">
+        <div class="hidden md:flex space-x-8">
+          {
+            navItems.map((item) => (
+              <a
+                href={`#${item.id}`}
+                data-nav-link={item.id}
+                class="text-sm font-medium transition-colors text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+        <ThemeToggle />
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Resalta en el menú la sección visible bajo la barra de navegación
+  const ACTIVE = ['text-blue-600', 'dark:text-blue-400'];
+  const INACTIVE = ['text-zinc-600', 'hover:text-zinc-900', 'dark:text-zinc-400', 'dark:hover:text-zinc-50'];
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]')];
+
+  const handleScroll = () => {
+    const current = links.find((link) => {
+      const section = document.getElementById(link.dataset.navLink ?? '');
+      if (!section) return false;
+      const rect = section.getBoundingClientRect();
+      return rect.top <= 100 && rect.bottom >= 100;
+    });
+    if (!current) return;
+    for (const link of links) {
+      const active = link === current;
+      link.classList.remove(...(active ? INACTIVE : ACTIVE));
+      link.classList.add(...(active ? ACTIVE : INACTIVE));
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+</script>

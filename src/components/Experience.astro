@@ -1,0 +1,121 @@
+---
+import {
+  SiPostgresql,
+  SiNodedotjs,
+  SiTypescript,
+  SiGit,
+  SiNestjs,
+  SiPhp,
+  SiMysql,
+  SiJavascript,
+  SiDocker,
+  SiGithubactions,
+} from 'react-icons/si';
+import { TbTestPipe } from 'react-icons/tb';
+
+const experiences = [
+  {
+    title: 'Analista QA',
+    company: 'Polite SpA',
+    period: 'Ago. 2026 - Actualidad',
+    description: '',
+    achievements: [
+      'Diseño y ejecuto planes y casos de prueba funcionales, de regresión y de API en cada sprint, con trazabilidad requerimiento → caso → defecto.',
+      'Automatizo pruebas E2E con Playwright y TypeScript (patrón Page Object).',
+      'Analizo el código entre versiones para anticipar defectos y priorizar pruebas.',
+      'Mantengo un ambiente de QA con Docker y CI/CD en GitHub Actions.',
+      'Redacto informes de pruebas basados en ISO/IEC/IEEE 29119-3.',
+    ],
+    technologies: [
+      { name: 'Playwright', icon: TbTestPipe, color: '#2EAD33' },
+      { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+      { name: 'Docker', icon: SiDocker, color: '#2496ED' },
+      { name: 'GitHub Actions', icon: SiGithubactions, color: '#2088FF' },
+    ],
+  },
+  {
+    title: 'Desarrollador Web Fullstack',
+    company: 'ITRed SpA',
+    period: 'Dic. 2025 - Mar. 2026',
+    description: 'Desarrollo y mantención de sitios web y tiendas virtuales a medida.',
+    achievements: [
+      'Migré más de 400 artículos de ayuda desde tablas de base de datos MySQL a sistema de archivos PHP, reduciendo la carga de consultas y simplificando el mantenimiento del contenido.',
+      'Implementé integración completa con la API de pagos Flow Chile en flujo de compra de dispositivos, habilitando pagos en línea para usuarios del portal tuusantiago.cl.',
+      'Desarrollé páginas dinámicas con lógica de parámetros GET para filtrado y navegación de contenido, siguiendo estándares de codificación internos de la empresa.',
+      'Participé en trabajo colaborativo con equipo de desarrollo en proyectos de sitios web y tiendas virtuales a medida con stack HTML5, CSS, PHP, JavaScript y MySQL.',
+    ],
+    technologies: [
+      { name: 'PHP', icon: SiPhp, color: '#777BB4' },
+      { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+      { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+    ],
+  },
+  {
+    title: 'Desarrollador Web Backend',
+    company: 'Digital Wave',
+    period: 'Dic. 2024 - Mar. 2025',
+    description: 'Sistema de Gestión Jurídica con Asistente IA Integrado.',
+    achievements: [
+      'Diseñé microservicios con APIs intermedias para desacoplar servicios de backend, mejorando la escalabilidad y el mantenimiento del sistema.',
+      'Modelé esquemas relacionales en PostgreSQL para soportar lógica de negocio en proyectos con requerimientos legales y de datos complejos.',
+      'Colaboré en equipos interdisciplinarios con abogados, científicos de datos y diseñadores UX/UI, adaptando soluciones a requerimientos no técnicos.',
+    ],
+    technologies: [
+      { name: 'NestJS', icon: SiNestjs, color: '#E0234E' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+      { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+      { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+      { name: 'Git', icon: SiGit, color: '#F05032' },
+    ],
+  },
+];
+---
+
+<section id="experiencia" class="py-20 bg-zinc-50 dark:bg-zinc-900/50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl font-bold text-zinc-900 dark:text-zinc-50 mb-12 text-center">Experiencia</h2>
+    <div class="space-y-8">
+      {
+        experiences.map((exp) => (
+          <div class="bg-white dark:bg-zinc-800 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+              <div>
+                <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-50">{exp.title}</h3>
+                <p class="text-blue-600 dark:text-blue-400 font-medium">{exp.company}</p>
+              </div>
+              <span class="text-sm text-zinc-500 dark:text-zinc-400 mt-2 md:mt-0">{exp.period}</span>
+            </div>
+            {exp.description && (
+              <p class="text-zinc-600 dark:text-zinc-300 mb-4 text-justify hyphens-auto">{exp.description}</p>
+            )}
+            <ul class="space-y-2">
+              {exp.achievements.map((achievement) => (
+                <li class="text-sm text-zinc-600 dark:text-zinc-400 flex items-start">
+                  <span class="text-blue-600 dark:text-blue-400 mr-2">▹</span>
+                  <span class="text-justify hyphens-auto">{achievement}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-6 pt-4 border-t border-zinc-200 dark:border-zinc-700">
+              <h4 class="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-3">Tecnologías utilizadas</h4>
+              <div class="flex flex-wrap gap-3">
+                {exp.technologies.map((tech) => {
+                  const Icon = tech.icon;
+                  return (
+                    <div
+                      class="flex items-center gap-2 bg-zinc-100 dark:bg-zinc-700/50 px-3 py-2 rounded-lg hover:scale-105 transition-transform"
+                      title={tech.name}
+                    >
+                      <Icon className="text-lg" style={{ color: tech.color }} />
+                      <span class="text-sm text-zinc-700 dark:text-zinc-300">{tech.name}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

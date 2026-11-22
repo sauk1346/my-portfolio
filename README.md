@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# antoniomorales.cl
 
-## Getting Started
+Portafolio personal publicado en [antoniomorales.cl](https://antoniomorales.cl).
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- [Astro 7](https://astro.build) con salida estática: el build genera HTML, CSS e imágenes optimizadas en `dist/`, sin servidor de aplicación.
+- **Tailwind 4** para los estilos y fuente Geist desde Fontsource.
+- **react-icons** para los íconos. Se renderizan en el build mediante `@astrojs/react`; no se envía React al navegador.
+- El modo oscuro y el resaltado del menú son scripts pequeños dentro de `ThemeToggle.astro` y `Navigation.astro`.
+
+## Estructura
+
+```text
+src/
+├── assets/images/   # imágenes que Astro optimiza en el build (WebP, varios tamaños)
+├── components/      # una sección de la página por componente
+├── layouts/         # BaseLayout: metadatos, vista previa al compartir y tema
+├── pages/           # index.astro
+└── styles/          # global.css
+public/
+├── docs/            # CV (fuente .tex y PDF), diplomas y certificados
+├── favicon.png
+└── og.png           # imagen de vista previa al compartir el enlace (1200×630)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Comandos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Comando           | Acción                                              |
+| :---------------- | :-------------------------------------------------- |
+| `npm install`     | Instala dependencias                                |
+| `npm run dev`     | Servidor de desarrollo en `localhost:4321`          |
+| `npm run build`   | Genera el sitio estático en `dist/`                 |
+| `npm run preview` | Sirve `dist/` en local para revisarlo antes de publicar |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## CV
 
-## Learn More
+El CV se escribe en `public/docs/cv_antonio_morales.tex` y se compila con XeLaTeX (usa la fuente Carlito):
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+cd public/docs && xelatex cv_antonio_morales.tex
+```

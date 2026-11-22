@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import avatar from '../assets/images/avatar.png';
+---
+
+<section id="sobre-mi" class="min-h-screen flex items-center justify-center pt-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center">
+      <div class="mb-8 flex justify-center">
+        <div class="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56">
+          <Image
+            src={avatar}
+            alt="Antonio Morales"
+            widths={[160, 224, 448]}
+            sizes="(min-width: 1024px) 224px, (min-width: 640px) 192px, 160px"
+            loading="eager"
+            fetchpriority="high"
+            class="absolute inset-0 w-full h-full rounded-full object-cover object-[center_20%] border-4 border-blue-600 dark:border-purple-600"
+          />
+        </div>
+      </div>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-zinc-900 dark:text-zinc-50 mb-6">
+        <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Antonio Morales</span>
+      </h1>
+      <h2 class="text-2xl sm:text-3xl text-zinc-600 dark:text-zinc-400 mb-8">Analista QA</h2>
+      <p class="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+        Aseguro la calidad de aplicaciones web con pruebas funcionales, de API y automatizadas con Playwright. Mi
+        experiencia como desarrollador fullstack me permite leer el código, anticipar dónde puede fallar y automatizar
+        las pruebas.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="#contacto"
+          class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
+        >
+          Contáctame
+        </a>
+        <a
+          href="/docs/cv_antonio_morales.pdf"
+          download
+          class="px-8 py-3 border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-50 rounded-lg font-medium transition-colors"
+        >
+          Descargar CV
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
