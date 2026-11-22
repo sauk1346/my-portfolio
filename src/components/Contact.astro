@@ -24,8 +24,11 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
             </p>
           </div>
         </a>
+        <!-- El número no va escrito en el HTML: lo arma el script de abajo para
+             que no lo recojan los programas que buscan teléfonos en sitios web. -->
         <a
-          href="https://wa.me/56964610880"
+          data-whatsapp="5,6,9,6,4,6,1,0,8,8,0"
+          href="#contacto"
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center gap-4 p-4 bg-zinc-50 dark:bg-zinc-700/50 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors"
@@ -33,8 +36,8 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
           <FaWhatsapp className="text-2xl text-blue-600 dark:text-blue-400" />
           <div>
             <p class="text-sm text-zinc-500 dark:text-zinc-400">WhatsApp</p>
-            <p class="text-zinc-900 dark:text-zinc-50 font-medium">
-              +56 9 6461 0880
+            <p data-whatsapp-number class="text-zinc-900 dark:text-zinc-50 font-medium">
+              Disponible con JavaScript activado
             </p>
           </div>
         </a>
@@ -67,3 +70,15 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
     </div>
   </div>
 </section>
+
+<script>
+  // Los dígitos van separados por comas en data-whatsapp y se unen en el navegador
+  // (si se escribieran en el script, el build los juntaría en el número completo).
+  const link = document.querySelector<HTMLAnchorElement>('[data-whatsapp]');
+  const label = document.querySelector<HTMLElement>('[data-whatsapp-number]');
+  const digits = link?.dataset.whatsapp?.split(',').join('') ?? '';
+  if (link && label && digits.length === 11) {
+    link.href = `https://wa.me/${digits}`;
+    label.textContent = `+${digits.slice(0, 2)} ${digits.slice(2, 3)} ${digits.slice(3, 7)} ${digits.slice(7)}`;
+  }
+</script>
