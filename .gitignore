@@ -36,3 +36,9 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# compilación del CV (el PDF publicado está en public/docs/)
+/cv/*.aux
+/cv/*.log
+/cv/*.out
+/cv/*.pdf

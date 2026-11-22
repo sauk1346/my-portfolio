@@ -35,8 +35,8 @@ public/
 
 ## CV
 
-El CV se escribe en `public/docs/cv_antonio_morales.tex` y se compila con XeLaTeX (usa la fuente Carlito):
+El CV se escribe en `cv/cv_antonio_morales.tex` (fuera de `public/`, para que el código fuente no se publique) y se compila con XeLaTeX (usa la fuente Carlito). El PDF resultante se copia a `public/docs/`, que es el que descarga el botón «Descargar CV»:
 
 ```bash
-cd public/docs && xelatex cv_antonio_morales.tex
+cd cv && xelatex cv_antonio_morales.tex && cp cv_antonio_morales.pdf ../public/docs/
 ```
