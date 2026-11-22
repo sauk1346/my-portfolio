@@ -14,6 +14,7 @@ const projects: Array<{
   technologies: string[];
   image: ImageMetadata;
   demo: string;
+  linkLabel: string;
 }> = [
   {
     title: 'SaukCode',
@@ -22,6 +23,7 @@ const projects: Array<{
     technologies: ['Astro', 'React', 'MDX', 'Tailwind CSS', 'GitHub Actions'],
     image: project01,
     demo: 'https://www.saukcode.cl',
+    linkLabel: 'Visitar sitio',
   },
   {
     title: 'Neon Havoc',
@@ -30,6 +32,7 @@ const projects: Array<{
     technologies: ['Godot', 'GDScript', 'Game Design'],
     image: project02,
     demo: 'https://sauk1346.github.io/neon-havoc/',
+    linkLabel: 'Jugar demo',
   },
   {
     title: 'Trigonautas',
@@ -38,6 +41,7 @@ const projects: Array<{
     technologies: ['JavaScript', 'HTML5', 'CSS3', 'Game-based Learning'],
     image: project03,
     demo: 'https://sauk1346.github.io/gamification_proyect/',
+    linkLabel: 'Ver demo',
   },
   {
     title: 'Sistema de Detección de Neumonía',
@@ -46,6 +50,7 @@ const projects: Array<{
     technologies: ['Python', 'TensorFlow', 'Keras', 'CNN', 'Deep Learning'],
     image: project04,
     demo: 'https://colab.research.google.com/drive/1RmuHqAVpVBOlC3Dk5FGS08z86xWaimnQ?usp=sharing',
+    linkLabel: 'Ver notebook',
   },
   {
     title: 'E-commerce Fullstack',
@@ -54,6 +59,7 @@ const projects: Array<{
     technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
     image: project05,
     demo: 'https://udd-c13-proyecto07-1-frontend.onrender.com/',
+    linkLabel: 'Ver demo',
   },
   {
     title: 'PodsLife Landing Page',
@@ -62,6 +68,7 @@ const projects: Array<{
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
     image: project06,
     demo: 'https://sauk1346.github.io/UDD_C13_Proyecto03/',
+    linkLabel: 'Ver demo',
   },
 ];
 ---
@@ -76,7 +83,7 @@ const projects: Array<{
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            class="group bg-white dark:bg-zinc-800 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow block cursor-pointer"
+            class="group bg-white dark:bg-zinc-800 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow flex flex-col cursor-pointer"
           >
             <div class="relative h-48 bg-zinc-200 dark:bg-zinc-700 overflow-hidden">
               <Image
@@ -87,9 +94,9 @@ const projects: Array<{
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
               />
             </div>
-            <div class="p-6">
+            <div class="p-6 flex flex-col flex-1">
               <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-50 mb-2">{project.title}</h3>
-              <p class="text-zinc-600 dark:text-zinc-300 mb-4 text-justify hyphens-auto">{project.description}</p>
+              <p class="text-zinc-600 dark:text-zinc-300 mb-4">{project.description}</p>
               <div class="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (
                   <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 text-sm rounded-full">
@@ -97,6 +104,11 @@ const projects: Array<{
                   </span>
                 ))}
               </div>
+              <span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline underline-offset-4">
+                {project.linkLabel}
+                <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                <span class="sr-only">(se abre en una pestaña nueva)</span>
+              </span>
             </div>
           </a>
         ))

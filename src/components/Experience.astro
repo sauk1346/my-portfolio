@@ -12,13 +12,22 @@ import {
   SiGithubactions,
 } from 'react-icons/si';
 import { TbTestPipe } from 'react-icons/tb';
+import type { IconType } from 'react-icons';
 
-const experiences = [
+const experiences: Array<{
+  title: string;
+  company: string;
+  type?: string;
+  period: string;
+  description: string;
+  achievements: string[];
+  technologies: Array<{ name: string; icon: IconType; color: string }>;
+}> = [
   {
     title: 'Analista QA',
     company: 'Polite SpA',
     period: 'Ago. 2026 - Actualidad',
-    description: '',
+    description: 'Aseguramiento de calidad de software web en un equipo de desarrollo ágil.',
     achievements: [
       'Diseño y ejecuto planes y casos de prueba funcionales, de regresión y de API en cada sprint, con trazabilidad requerimiento → caso → defecto.',
       'Automatizo pruebas E2E con Playwright y TypeScript (patrón Page Object).',
@@ -36,6 +45,7 @@ const experiences = [
   {
     title: 'Desarrollador Web Fullstack',
     company: 'ITRed SpA',
+    type: 'Práctica profesional',
     period: 'Dic. 2025 - Mar. 2026',
     description: 'Desarrollo y mantención de sitios web y tiendas virtuales a medida.',
     achievements: [
@@ -53,6 +63,7 @@ const experiences = [
   {
     title: 'Desarrollador Web Backend',
     company: 'Digital Wave',
+    type: 'Práctica profesional',
     period: 'Dic. 2024 - Mar. 2025',
     description: 'Sistema de Gestión Jurídica con Asistente IA Integrado.',
     achievements: [
@@ -81,18 +92,25 @@ const experiences = [
             <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
               <div>
                 <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-50">{exp.title}</h3>
-                <p class="text-blue-600 dark:text-blue-400 font-medium">{exp.company}</p>
+                <p class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <span class="text-blue-600 dark:text-blue-400 font-medium">{exp.company}</span>
+                  {exp.type && (
+                    <span class="px-2 py-0.5 text-xs font-medium rounded-full bg-zinc-100 text-zinc-600 dark:bg-zinc-700 dark:text-zinc-300">
+                      {exp.type}
+                    </span>
+                  )}
+                </p>
               </div>
               <span class="text-sm text-zinc-500 dark:text-zinc-400 mt-2 md:mt-0">{exp.period}</span>
             </div>
             {exp.description && (
-              <p class="text-zinc-600 dark:text-zinc-300 mb-4 text-justify hyphens-auto">{exp.description}</p>
+              <p class="text-zinc-600 dark:text-zinc-300 mb-4">{exp.description}</p>
             )}
             <ul class="space-y-2">
               {exp.achievements.map((achievement) => (
-                <li class="text-sm text-zinc-600 dark:text-zinc-400 flex items-start">
-                  <span class="text-blue-600 dark:text-blue-400 mr-2">▹</span>
-                  <span class="text-justify hyphens-auto">{achievement}</span>
+                <li class="text-[0.95rem] leading-relaxed text-zinc-600 dark:text-zinc-300 flex items-start">
+                  <span class="text-blue-600 dark:text-blue-400 mr-2" aria-hidden="true">▹</span>
+                  <span>{achievement}</span>
                 </li>
               ))}
             </ul>

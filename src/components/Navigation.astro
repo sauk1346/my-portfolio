@@ -3,34 +3,62 @@ import ThemeToggle from './ThemeToggle.astro';
 
 const navItems = [
   { id: 'sobre-mi', label: 'Sobre mí' },
-  { id: 'proyectos', label: 'Proyectos' },
   { id: 'experiencia', label: 'Experiencia' },
+  { id: 'proyectos', label: 'Proyectos' },
   { id: 'habilidades', label: 'Habilidades' },
   { id: 'educacion', label: 'Educación' },
   { id: 'contacto', label: 'Contacto' },
 ];
+
+const linkClass =
+  'font-medium transition-colors text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50';
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-zinc-200 dark:border-zinc-800">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
-      <a href="#sobre-mi" class="text-xl font-bold text-zinc-900 dark:text-zinc-50">Portfolio</a>
-      <div class="flex items-center gap-6">
+      <a href="#sobre-mi" class="text-xl font-bold text-zinc-900 dark:text-zinc-50">Antonio Morales</a>
+      <div class="flex items-center gap-3 md:gap-6">
         <div class="hidden md:flex space-x-8">
           {
             navItems.map((item) => (
-              <a
-                href={`#${item.id}`}
-                data-nav-link={item.id}
-                class="text-sm font-medium transition-colors text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-              >
+              <a href={`#${item.id}`} data-nav-link={item.id} class={`text-sm ${linkClass}`}>
                 {item.label}
               </a>
             ))
           }
         </div>
         <ThemeToggle />
+        <button
+          type="button"
+          data-menu-toggle
+          class="md:hidden p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors text-zinc-800 dark:text-zinc-200"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="menu-movil"
+        >
+          <!-- Hamburguesa: visible con el menú cerrado -->
+          <svg data-icon-open class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <!-- X: visible con el menú abierto -->
+          <svg data-icon-close class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
       </div>
+    </div>
+  </div>
+
+  <div id="menu-movil" data-menu class="md:hidden hidden border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-black">
+    <div class="max-w-6xl mx-auto px-4 py-2 flex flex-col">
+      {
+        navItems.map((item) => (
+          <a href={`#${item.id}`} data-nav-link={item.id} class={`py-3 text-base ${linkClass}`}>
+            {item.label}
+          </a>
+        ))
+      }
     </div>
   </div>
 </nav>
@@ -47,14 +75,36 @@ const navItems = [
       if (!section) return false;
       const rect = section.getBoundingClientRect();
       return rect.top <= 100 && rect.bottom >= 100;
-    });
+    })?.dataset.navLink;
     if (!current) return;
     for (const link of links) {
-      const active = link === current;
+      const active = link.dataset.navLink === current;
       link.classList.remove(...(active ? INACTIVE : ACTIVE));
       link.classList.add(...(active ? ACTIVE : INACTIVE));
     }
   };
 
   window.addEventListener('scroll', handleScroll, { passive: true });
+
+  // Menú móvil: se abre con el botón y se cierra al elegir una sección o con Escape
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+
+  const setMenu = (open: boolean) => {
+    if (!toggle || !menu) return;
+    menu.classList.toggle('hidden', !open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    toggle.querySelector('[data-icon-open]')?.classList.toggle('hidden', open);
+    toggle.querySelector('[data-icon-close]')?.classList.toggle('hidden', !open);
+  };
+
+  toggle?.addEventListener('click', () => setMenu(menu?.classList.contains('hidden') ?? false));
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+      setMenu(false);
+      toggle.focus();
+    }
+  });
 </script>

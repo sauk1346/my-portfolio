@@ -62,7 +62,7 @@ const education: Array<{
 ];
 ---
 
-<section id="educacion" class="py-20 bg-zinc-50 dark:bg-zinc-900/50">
+<section id="educacion" class="py-20">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 class="text-4xl font-bold text-zinc-900 dark:text-zinc-50 mb-12 text-center">Educación</h2>
     <div class="space-y-6">
@@ -81,7 +81,7 @@ const education: Array<{
                   </div>
                   <span class="text-sm text-zinc-500 dark:text-zinc-400 mt-2 md:mt-0">{edu.period}</span>
                 </div>
-                <p class="text-zinc-600 dark:text-zinc-300 mb-4 text-justify hyphens-auto">{edu.description}</p>
+                <p class="text-zinc-600 dark:text-zinc-300 mb-4">{edu.description}</p>
                 {edu.diploma && (
                   <div class="mt-4">
                     <a
